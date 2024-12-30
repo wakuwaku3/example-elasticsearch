@@ -1,0 +1,39 @@
+{
+    "name": "example-elasticsearch code space",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "forwardPorts": [
+        9200,
+        9300
+    ],
+    "remoteUser": "codespace",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "autoOpenWorkspace.enableAutoOpenAlwaysFirst": true
+            },
+            "extensions": [
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "esbenp.prettier-vscode",
+                "EditorConfig.EditorConfig",
+                "streetsidesoftware.code-spell-checker",
+                "ms-azuretools.vscode-docker",
+                "henriiik.docker-linter",
+                "p1c2u.docker-compose",
+                "github.vscode-github-actions",
+                "DavidAnson.vscode-markdownlint",
+                "redhat.vscode-yaml",
+                "wmaurer.change-case",
+                "ms-vscode.go",
+                "ms-azuretools.vscode-docker",
+                "GitHub.vscode-pull-request-github",
+                "humao.rest-client",
+                "zoma.vscode-auto-open-workspace",
+                "golang.go"
+            ]
+        }
+    },
+    "remoteEnv": {}
+}

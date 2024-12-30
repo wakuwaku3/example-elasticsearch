@@ -1,0 +1,28 @@
+{
+    "folders": [
+        {
+            "name": "example-elasticsearch",
+            "path": "."
+        },
+        {
+            "name": "golang",
+            "path": "golang"
+        }
+    ],
+    "settings": {
+        "go.lintTool": "golangci-lint",
+        "go.lintOnSave": "workspace",
+        "[markdown]": {
+            "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+        },
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+            "golang": true
+        }
+    }
+}

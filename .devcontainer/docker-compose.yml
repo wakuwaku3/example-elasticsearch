@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    env_file:
+      # Ensure that the variables in .env match the same variables in devcontainer.json
+      - ./.env
+    volumes:
+      - ../..:/workspaces:cached
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+    container_name: elasticsearch
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+      - ./:/etc/elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=dev
+      - cluster.initial_master_nodes=elasticsearch
+      - discovery.seed_hosts=elasticsearch
+      - ELASTIC_USERNAME=${ELASTICESEARCH_ELASTIC_USERNAME}
+      - ELASTIC_PASSWORD=${ELASTICESEARCH_ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.license.self_generated.type=trial
+      - "TZ=Asia/Tokyo"
+    mem_limit: 4294967296
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+volumes:
+  elasticsearch_data:
+    driver: local
